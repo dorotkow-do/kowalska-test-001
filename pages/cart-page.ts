@@ -3,6 +3,7 @@ import { expect, type Locator, type Page } from '@playwright/test';
 export class CartPage {
   readonly page: Page;
   readonly cartHeader: Locator;
+  readonly bikeLightRemoveButton: Locator;
   readonly continueShoppingButton: Locator;
   readonly checkoutButton: Locator;
   readonly itemName: Locator;
@@ -11,6 +12,7 @@ export class CartPage {
   constructor(page: Page) {
     this.page = page;
     this.cartHeader = page.locator('[data-test="title"]');
+    this.bikeLightRemoveButton = page.locator('[data-test="remove-sauce-labs-bike-light"]');
     this.continueShoppingButton = page.locator('[data-test="continue-shopping"]');
     this.checkoutButton = page.locator('[data-test="checkout"]');
     this.itemName = page.locator('[data-test="inventory-item-name"]');
