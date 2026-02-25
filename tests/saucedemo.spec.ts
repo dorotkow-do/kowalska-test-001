@@ -18,6 +18,13 @@ test('login to saucedemo', async ({ page }) => {
   await productsPage.addToCart('bolt-t-shirt');
   await productsPage.shoppingCartLink.click();
 
+  const cartPage = new CartPage(page);
+  await cartPage.assertPage(2);
+  await expect(cartPage.itemName).toHaveText([
+    'Sauce Labs Bike Light',
+    'Sauce Labs Bolt T-Shirt'
+  ]);
+  await cartPage.checkoutButton.click();
 });
 
 test.skip('try to login as locked_out_user', async ({ page }) => {
