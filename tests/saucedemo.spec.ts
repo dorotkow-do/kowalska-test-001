@@ -12,7 +12,10 @@ test.beforeEach(async ({ page }) => {
 
 test('login to saucedemo', async ({ page }) => {
   const loginPage = new LoginPage(page);
-  await loginPage.login(process.env.STANDARD_USER || 'standard_user', process.env.PASSWORD || 'secret_sauce');
+  await loginPage.login(
+    process.env.STANDARD_USER || 'standard_user',
+    process.env.PASSWORD || 'secret_sauce'
+  );
 
   const productsPage = new ProductsPage(page);
   await productsPage.assertPage();
@@ -40,6 +43,9 @@ test('login to saucedemo', async ({ page }) => {
 
 test.skip('try to login as locked_out_user', async ({ page }) => {
   const loginPage = new LoginPage(page);
-  await loginPage.login(process.env.LOCKED_OUT_USER || 'locked_out_user', process.env.PASSWORD || 'secret_sauce');
+  await loginPage.login(
+    process.env.LOCKED_OUT_USER || 'locked_out_user',
+    process.env.PASSWORD || 'secret_sauce'
+  );
   await expect(loginPage.error).toHaveText('Epic sadface: Sorry, this user has been locked out.');
 });
